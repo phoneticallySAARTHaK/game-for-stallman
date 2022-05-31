@@ -38,3 +38,21 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.tile-map {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+}
+
+.tile-map p {
+    width: 50px;
+    height: 50px;
+    background-color: aqua;
+    margin: 0;
+    padding: 0;
+}
+
+.tile-map p:target {
+    background-color: rebeccapurple;
+}
