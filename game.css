@@ -134,7 +134,7 @@ article {
 }
 
 .tile-map div input[type="checkbox"]:checked + label {
-    background-color:red;
+    background-color: transparent;
     background-image:url(Copyright.svg);
     background-size: contain;
     background-repeat: no-repeat;
