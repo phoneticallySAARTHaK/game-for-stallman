@@ -35,6 +35,15 @@ body {
     font-size: 1.5rem;
 }
 
+body::after{
+    position:absolute;
+    width:0;
+    height:0;
+    overflow:hidden;
+    z-index:-1;
+    content:url(game-over.svg) url(FSF_Logo.svg) url(Copyright.svg);
+ }
+
 p::after {
     counter-reset: time var(--time-limit-number);
     content: "" counter(time) "s";
