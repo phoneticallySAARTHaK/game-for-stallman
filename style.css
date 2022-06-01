@@ -11,9 +11,10 @@ body {
     padding: 5px;
     background-color: #0093E9;
     background-image: linear-gradient(20deg, #0093E9 0%, #80D0C7 100%);
+    
 }
 
-h1 {
+h1, h2 {
     margin: 0;
     margin-top: 10px;
     padding: 0;
@@ -21,9 +22,27 @@ h1 {
     font-size: calc(1.25em + 2vw);
 }
 
+h2 {
+    text-align: left;
+    font-size: calc(1.15em + 2vw);
+}
+
 p {
     line-height: 1.5;
     text-align: justify;
+}
+
+
+ul {
+    margin-top: 0;
+    margin-left: 0;
+    padding-left: 10px;
+}
+
+li {
+    margin-top: 0;
+    margin-left: 0;
+    list-style-position: inside;
 }
 
 /* Button */
