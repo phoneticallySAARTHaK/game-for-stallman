@@ -1,23 +1,47 @@
 :root {
-    font-family: sans-serif;
+    font-family: serif;
     --cells-row: 6;
     --side-length: min(80vh, 80vw);
+    --time-limit: 20s;
+    --time-limit-number: 20;
+    font-size: 16px;
 }
-/* 
-* {
-    box-sizing: border-box;
-} */
+
+@media (pointer: fine) {
+    :root {
+        --time-limit: 20s;
+        --time-limit-number: 20;
+    }
+}
+
+@media (pointer: coarse) {
+    :root {
+        --time-limit: 15s;
+        --time-limit-number: 15;
+    }
+}
+
 
 body {
     width: 100vw;
     height: 100vh;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     display: flex;
+    flex-flow: column nowrap;
     align-items: center;
-    justify-content: center;
+    gap: 20px;
+    padding-bottom: 20px;
 }
 
+p::after {
+    counter-reset: time var(--time-limit-number);
+    content: "" counter(time) "s";
+    display: inline-block;
+}
+
+
 article {
-    margin: auto;
     display: flex;
     align-items:stretch;
     justify-content: flex-start;
@@ -36,27 +60,46 @@ article {
 .time {
     height: 2.5%;
     width: 100%;
-    background-color: aqua;
+    background-color: darkgreen;
     margin: 2%;
     clip-path: inset(0px round 15px);
     overflow: hidden;
-    animation: limit 10s linear 1s 1 normal forwards;
+    animation: limit var(--time-limit) linear 1s 1 normal forwards;
 }
 
 @keyframes limit {
     from {
         background-color: green;
         width: 100%;
+        position: static;
+        height: 2.5%;
+        margin: 2%;
     }
 
-    99% {
+    99.9% {
         background-color: red;
         width: 2%;
+        position: static;
+        height: 2.5%;
+        margin: 2%;
+        background-image: none;
     }
 
     to {
-        background-color: red;
-        margin-right: 100%;
+        position: absolute;
+        background-color: rgb(252, 120, 120);
+        background-image: url(game-over.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        top: 0%;
+        left: 0%;
+        right: 0%;
+        bottom: 0%;
+        z-index: 1;
+        height: 100%;
+        margin: 0%;
+        clip-path: inset(0 round 5%);
     }
 }
 
@@ -64,7 +107,7 @@ article {
 .tile-map {
     width: 100%;
     height: 90%;
-    flex-shrink: 1 1 auto;
+    flex: 1 1 auto;
 
     display: grid;
     grid-template-columns: repeat(var(--cells-row), 1fr);
@@ -82,7 +125,8 @@ article {
     display: block;
     width: 100%;
     height: 100%;
-    background-color: blue;
+    overflow: hidden;
+    background-color: rebeccapurple;
 }
 
 .tile-map div input[type="checkbox"] {
@@ -90,14 +134,23 @@ article {
 }
 
 .tile-map div input[type="checkbox"]:checked + label {
-    background-color:blueviolet;
+    background-color:red;
+    background-image:url(Copyright.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     pointer-events: none;
 }
 
 .tile-map div input[type="checkbox"]:target:checked + label {
-    display: block;
+    display: flex;
+    justify-content: center;
     position: absolute;
     background-color: bisque;
+    background-image: url(FSF_Logo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
     z-index: 2;
     top: 0%;
     left: 0%;
@@ -106,9 +159,26 @@ article {
     clip-path: inset(0 round 5%);
 }
 
-section {
-    height: 100vh;
-    border: 1px solid black;
+.tile-map div input[type="checkbox"]:target:checked + label::after {
+    content: "You won!!";
+    text-align: center;
+    font-size: calc(1.2rem + 1vw);
+}
+
+
+.back-button a {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background-color: #FBAB7E;
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    outline: none;
+    text-align: center;
+    line-height: 1.5;
+    text-decoration: none;
+    border-radius: 5%;
+    padding: 5px;
+
 }
 
 @media screen and (min-width: 600px) {
