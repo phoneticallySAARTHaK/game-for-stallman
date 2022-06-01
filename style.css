@@ -5,13 +5,30 @@
 }
 
 body {
-    width: 100%;
-    height: 100%;
+    width: 95%;
+    height: 95%;
+    margin: 5px;
+    padding: 5px;
+    background-color: #0093E9;
+    background-image: linear-gradient(20deg, #0093E9 0%, #80D0C7 100%);
+}
+
+h1 {
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    text-align: center;
+    font-size: calc(1.25em + 2vw);
+}
+
+p {
+    line-height: 1.5;
+    text-align: justify;
 }
 
 /* Button */
 .fake-button a {
-    background-color:bisque;
+    background-color: transparent;
     margin: 0;
     padding: 0;
     display: inline-block;
@@ -21,34 +38,48 @@ body {
     display: grid;
     grid-template-columns: repeat(var(--cells-row), 1fr);
     gap: 0;
-    
+    background:
+            repeating-linear-gradient(190deg, rgba(255, 0, 0, 0.5) 40px,
+              rgba(255, 153, 0, 0.5) 80px, rgba(255, 255, 0, 0.5) 120px,
+              rgba(0, 255, 0, 0.5) 160px, rgba(0, 0, 255, 0.5) 200px,
+              rgba(75, 0, 130, 0.5) 240px, rgba(238, 130, 238, 0.5) 280px,
+              rgba(255, 0, 0, 0.5) 300px),
+            repeating-linear-gradient(-190deg, rgba(255, 0, 0, 0.5) 30px,
+              rgba(255, 153, 0, 0.5) 60px, rgba(255, 255, 0, 0.5) 90px,
+              rgba(0, 255, 0, 0.5) 120px, rgba(0, 0, 255, 0.5) 150px,
+              rgba(75, 0, 130, 0.5) 180px, rgba(238, 130, 238, 0.5) 210px,
+              rgba(255, 0, 0, 0.5) 230px),
+            repeating-linear-gradient(23deg, red 50px, orange 100px,
+              yellow 150px, green 200px, blue 250px,
+              indigo 300px, violet 350px, red 370px);      
+
     margin: 0 auto;
     width: var(--side-length);
     height: var(--side-length);
     padding: 0;
-    clip-path: inset(0% 50% 50% 0%);
+    clip-path: inset(0% 50% 50% 0% round 5%);
     position: relative;
     animation: uncover 5s linear -0s infinite none;
 }
 
 @keyframes uncover {
     from {
-        clip-path: inset(0% 50% 50% 0%);
+        clip-path: inset(0% 50% 50% 0% round 5%);
     }
 
     25% {
-        clip-path: inset(50% 50% 0% 0%);
+        clip-path: inset(50% 50% 0% 0% round 5%);
     }
 
     50% {
-        clip-path: inset(50% 0% 0% 50%);
+        clip-path: inset(50% 0% 0% 50% round 5%);
     }
 
     75% {
-        clip-path: inset(0% 0% 50% 50%);
+        clip-path: inset(0% 0% 50% 50% round 5%);
     }
 
     to {
-        clip-path: inset(0% 50% 50% 0%);
+        clip-path: inset(0% 50% 50% 0% round 5%);
     }
 }
