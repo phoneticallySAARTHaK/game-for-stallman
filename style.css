@@ -3,6 +3,7 @@
     font-size: 16px;
     --cells-row: 6;
     --side-length: calc(150px + 15vw);
+    color: black;
 }
 
 body {
